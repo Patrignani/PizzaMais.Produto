@@ -1,4 +1,6 @@
 ﻿using PizzaMais.Produto.Communs.Interfaces;
+using PizzaMais.Produto.Communs.Interfaces.Repository;
+using PizzaMais.Produto.Core.Repository;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -9,10 +11,13 @@ namespace PizzaMais.Produto.Core
         IDbConnection _connection = null;
         IDbTransaction _transaction = null;
 
+        private IFornecedorRepository _fornecedorRepository = null;
         public UnitOfWork(SqlConnection connection)
         {
             _connection = connection;
         }
+
+        public IFornecedorRepository FornecedorRepository => _fornecedorRepository != null ? _fornecedorRepository : _fornecedorRepository = new FornecedorRepository(_connection, _transaction);
 
         public void Begin()
         {

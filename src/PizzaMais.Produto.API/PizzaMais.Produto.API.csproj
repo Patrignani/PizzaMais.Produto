@@ -10,10 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\PizzaMais.Produto.Core\PizzaMais.Produto.Core.csproj" />
   </ItemGroup>
 
