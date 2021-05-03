@@ -3,7 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaMais.Produto.API", "src\PizzaMais.Produto.API\PizzaMais.Produto.API.csproj", "{178CC3CC-F3A3-4892-A555-0E8319E8B9EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaMais.Produto.Communs", "src\PizzaMais.Produto.Communs\PizzaMais.Produto.Communs.csproj", "{D051CB4F-DDD2-447D-9643-5AFCDE83DF0C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaMais.Produto.Core", "src\PizzaMais.Produto.Core\PizzaMais.Produto.Core.csproj", "{4090A4E6-D1D3-4DB9-B4E4-1F1AC17BCF4F}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{178CC3CC-F3A3-4892-A555-0E8319E8B9EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{178CC3CC-F3A3-4892-A555-0E8319E8B9EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{178CC3CC-F3A3-4892-A555-0E8319E8B9EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{178CC3CC-F3A3-4892-A555-0E8319E8B9EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D051CB4F-DDD2-447D-9643-5AFCDE83DF0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D051CB4F-DDD2-447D-9643-5AFCDE83DF0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D051CB4F-DDD2-447D-9643-5AFCDE83DF0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D051CB4F-DDD2-447D-9643-5AFCDE83DF0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4090A4E6-D1D3-4DB9-B4E4-1F1AC17BCF4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4090A4E6-D1D3-4DB9-B4E4-1F1AC17BCF4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4090A4E6-D1D3-4DB9-B4E4-1F1AC17BCF4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4090A4E6-D1D3-4DB9-B4E4-1F1AC17BCF4F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
