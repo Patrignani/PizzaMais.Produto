@@ -2,3 +2,6 @@
 src/PizzaMais.Produto.API/obj/
 src/PizzaMais.Produto.Communs/obj/
 src/PizzaMais.Produto.Core/obj/
+src/PizzaMais.Produto.API/bin/
+src/PizzaMais.Produto.Communs/bin/
+src/PizzaMais.Produto.Core/bin/
