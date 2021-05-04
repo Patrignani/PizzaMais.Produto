@@ -41,7 +41,7 @@ namespace PizzaMais.Produto.Core.SqlCommands
             var query = consultas();
 
             if (filtro.Id.HasValue)
-                query.WhereRaw("CAST(\"Id\" AS NVARCHAR) LIKE CONCAT(CAST(@Id AS NVARCHAR),'%') ");
+                query.WhereRaw("CAST(\"Id\" AS VARCHAR(8)) LIKE CONCAT(CAST(@Id AS VARCHAR(8)),'%') ");
 
             if (!String.IsNullOrEmpty(filtro.Nome))
                 query.WhereLike("Nome", "CONCAT(@Nome,'%')");
@@ -67,16 +67,13 @@ namespace PizzaMais.Produto.Core.SqlCommands
             "DataCriacao", "UsuarioIdCriacao","Ativo", "Nome", "Documento", "TipoDocumento"
         });
 
-
-
-
         public static string Update() =>
             SqlHelper.Update("Fornecedor", new string[] {
             "DataAtualizacao", "UsuarioIdAtualizacao", "Ativo", "Nome", "Documento", "TipoDocumento"
         });
 
 
-        public static string Delete() => @"DELETE [dbo].[Fornecedor]  WHERE [Id] = @Id";
+        public static string Delete() => SqlHelper.Delete("Fornecedor");
 
         public static Query MontarFornecedorOrderBy(this Query query, FornecedorFiltro filtro)
         {

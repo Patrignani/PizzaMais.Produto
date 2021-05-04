@@ -24,6 +24,8 @@ namespace PizzaMais.Produto.Core.Utils
             return sb.ToString();
         }
 
+        public static string Delete(string tabela) => "DELETE FROM public.\"" + tabela + "\" WHERE \"Id\" = @Id";
+
         public static string Inserir(string tabela, IEnumerable<string> campos)
         {
             var script = "INSERT INTO public.\""+ tabela + "\"( \"Id\",";
