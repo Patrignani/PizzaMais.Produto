@@ -2,6 +2,7 @@
 using PizzaMais.Produto.Communs.DTOs;
 using PizzaMais.Produto.Communs.Filtros;
 using PizzaMais.Produto.Communs.Interfaces.Service;
+using System;
 using System.Threading.Tasks;
 
 namespace PizzaMais.Produto.API.Controllers
@@ -27,21 +28,13 @@ namespace PizzaMais.Produto.API.Controllers
         public async Task<IActionResult> GetAsync(int id) => Ok(await _service.ObterPorIdAsync(id));
 
         [HttpPost]
-        public async Task<IActionResult> PostAsync([FromBody] FornecedorInserir value)
-        {
-            await _service.InserirAsync(value);
-
-            return Ok(value);
-        }
-
+        public async Task<IActionResult> PostAsync([FromBody] FornecedorInserir value) => Ok(await _service.InserirAsync(value));
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] FornecedorAtualizar value)
         {
             if (value.Id == id)
             {
-                await _service.AtualizarAsync(value);
-
-                return Ok(value);
+                return Ok(await _service.AtualizarAsync(value));
             }
 
             return BadRequest();

@@ -41,14 +41,14 @@ namespace PizzaMais.Produto.Communs.DTOs
         public TipoDocumento TipoDocumento { get; set; }
         public bool Ativo { get; set; }
 
-        public Fornecedor GerarFornecedor() => new Fornecedor
+        public Fornecedor GerarFornecedor(int usuarioId) => new Fornecedor
         {
             Nome = Nome,
             TipoDocumento = TipoDocumento,
             Documento = Documento,
             Ativo = Ativo,
             DataCriacao = DateTime.UtcNow,
-            UsuarioIdCriacao = 1
+            UsuarioIdCriacao = usuarioId
         };
     }
 
@@ -59,13 +59,15 @@ namespace PizzaMais.Produto.Communs.DTOs
         public TipoDocumento TipoDocumento { get; set; }
         public bool Ativo { get; set; }
 
-        public Fornecedor GerarFornecedor() => new Fornecedor
+        public Fornecedor GerarFornecedor(int usuarioId) => new Fornecedor
         {
             Id = Id,
             Ativo = Ativo,
             Documento = Documento,
             Nome = Nome,
-            TipoDocumento = TipoDocumento
+            TipoDocumento = TipoDocumento,
+            DataAtualizacao = DateTime.UtcNow,
+            UsuarioIdAtualizacao = usuarioId
         };
     }
 

@@ -1,8 +1,8 @@
-﻿using PizzaMais.Produto.Communs.Interfaces;
+﻿using Npgsql;
+using PizzaMais.Produto.Communs.Interfaces;
 using PizzaMais.Produto.Communs.Interfaces.Repository;
 using PizzaMais.Produto.Core.Repository;
 using System.Data;
-using System.Data.SqlClient;
 
 namespace PizzaMais.Produto.Core
 {
@@ -12,7 +12,7 @@ namespace PizzaMais.Produto.Core
         IDbTransaction _transaction = null;
 
         private IFornecedorRepository _fornecedorRepository = null;
-        public UnitOfWork(SqlConnection connection)
+        public UnitOfWork(NpgsqlConnection connection)
         {
             _connection = connection;
         }

@@ -23,7 +23,7 @@ namespace PizzaMais.Produto.Core.SqlCommands
             var query = new Query("Fornecedor").Select("Id", "Documento", "TipoDocumento", "Nome");
 
             if (!String.IsNullOrEmpty(filtro.Nome))
-                query.WhereLike("Nome", "@Nome + '%'");
+                query.WhereLike("Nome", "CONCAT(@Nome,'%')");
 
             if (filtro.Ativo.HasValue)
                 query.Where("Ativo", "@Ativo");
@@ -41,13 +41,13 @@ namespace PizzaMais.Produto.Core.SqlCommands
             var query = consultas();
 
             if (filtro.Id.HasValue)
-                query.WhereRaw("CAST(Id AS NVARCHAR) LIKE CAST(@Id AS NVARCHAR) + '%' ");
+                query.WhereRaw("CAST(\"Id\" AS NVARCHAR) LIKE CONCAT(CAST(@Id AS NVARCHAR),'%') ");
 
             if (!String.IsNullOrEmpty(filtro.Nome))
-                query.WhereLike("Nome", "@Nome + '%'");
+                query.WhereLike("Nome", "CONCAT(@Nome,'%')");
 
             if (!String.IsNullOrEmpty(filtro.Documento))
-                query.WhereLike("Documento", "@Documento + '%'");
+                query.WhereLike("Documento", "CONCAT(@Documento,'%')");
 
             if (filtro.TipoDocumento.HasValue)
                 query.Where("TipoDocumento", "@TipoDocumento");
@@ -59,36 +59,22 @@ namespace PizzaMais.Produto.Core.SqlCommands
                 .Offset(filtro.Offset)
                 .Limit(filtro.Limit);
 
+            var a = query.ObterString();
             return query.ObterString();
         }
 
-        public static string Inserir() =>
-            @"INSERT INTO [dbo].[Fornecedor]
-                ([Nome]
-                ,[Documento]
-                ,[TipoDocumento]
-                ,[Ativo]
-                ,[DataCriacao]
-                ,[UsuarioIdCriacao])
-            OUTPUT Inserted.Id
-            VALUES
-                (@Nome
-                ,@Documento
-                ,@TipoDocumento
-                ,@Ativo
-                ,@DataCriacao
-                ,@UsuarioIdCriacao)";
+        public static string Inserir() => SqlHelper.Inserir("Fornecedor", new string[] {
+            "DataCriacao", "UsuarioIdCriacao","Ativo", "Nome", "Documento", "TipoDocumento"
+        });
+
+
+
 
         public static string Update() =>
-          @"UPDATE [dbo].[Fornecedor]
-            SET [Nome] = @Nome
-            ,[Documento] = @Documento
-            ,[TipoDocumento] = @TipoDocumento
-            ,[Ativo] = @Ativo
-            ,[DataAtualizacao] = @DataAtualizacao
-            ,[UsuarioIdAtualizacao] = @UsuarioIdAtualizacao
-            WHERE 
-            [Id] = @Id";
+            SqlHelper.Update("Fornecedor", new string[] {
+            "DataAtualizacao", "UsuarioIdAtualizacao", "Ativo", "Nome", "Documento", "TipoDocumento"
+        });
+
 
         public static string Delete() => @"DELETE [dbo].[Fornecedor]  WHERE [Id] = @Id";
 
