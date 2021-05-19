@@ -59,7 +59,6 @@ namespace PizzaMais.Produto.Core.SqlCommands
                 .Offset(filtro.Offset)
                 .Limit(filtro.Limit);
 
-            var a = query.ObterString();
             return query.ObterString();
         }
 

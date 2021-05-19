@@ -15,7 +15,8 @@ namespace PizzaMais.Produto.Core.Middleware
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddScoped<IFornecedorService, FornecedorService>();
-
+            services.AddScoped<IProdutoRevendaService, ProdutoRevendaService>();
+            
             return services;
         }
     }

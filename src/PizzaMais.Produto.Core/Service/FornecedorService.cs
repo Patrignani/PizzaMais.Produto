@@ -41,15 +41,7 @@ namespace PizzaMais.Produto.Core.Service
 
         public async Task<IEnumerable<FornecedorObter>> ListarAsync(FornecedorFiltro filtro)
         {
-            try
-            {
-                return await _uow.FornecedorRepository.LitarAsync(filtro);
-            }
-            catch (Exception e)
-            { 
-            
-            }
-            return null;
+            return await _uow.FornecedorRepository.LitarAsync(filtro);
         }
 
         public async Task<IEnumerable<FornecedorSimplificado>> LitarSimplificadoAsync(FornecedorFiltro filtro) =>

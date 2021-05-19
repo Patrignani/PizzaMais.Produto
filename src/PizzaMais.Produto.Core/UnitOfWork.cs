@@ -12,13 +12,14 @@ namespace PizzaMais.Produto.Core
         IDbTransaction _transaction = null;
 
         private IFornecedorRepository _fornecedorRepository = null;
+        private IProdutoRevendaRepository _produtoRevendaRepository = null;
         public UnitOfWork(NpgsqlConnection connection)
         {
             _connection = connection;
         }
 
         public IFornecedorRepository FornecedorRepository => _fornecedorRepository != null ? _fornecedorRepository : _fornecedorRepository = new FornecedorRepository(_connection, _transaction);
-
+        public IProdutoRevendaRepository ProdutoRevendaRepository => _produtoRevendaRepository != null ? _produtoRevendaRepository : _produtoRevendaRepository = new ProdutoRevendaRepository(_connection, _transaction);
         public void Begin()
         {
             if (_connection.State != ConnectionState.Open)
