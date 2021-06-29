@@ -23,7 +23,7 @@ namespace PizzaMais.Produto.Core.SqlCommands
             var query = new Query("Fornecedor").Select("Id", "Documento", "TipoDocumento", "Nome");
 
             if (!String.IsNullOrEmpty(filtro.Nome))
-                query.WhereLike("Nome", "CONCAT(@Nome,'%')");
+                query.WhereLike("Nome", "LOWER(CONCAT(@Nome,'%'))");
 
             if (filtro.Ativo.HasValue)
                 query.Where("Ativo", "@Ativo");
@@ -44,7 +44,7 @@ namespace PizzaMais.Produto.Core.SqlCommands
                 query.WhereRaw("CAST(\"Id\" AS VARCHAR(8)) LIKE CONCAT(CAST(@Id AS VARCHAR(8)),'%') ");
 
             if (!String.IsNullOrEmpty(filtro.Nome))
-                query.WhereLike("Nome", "CONCAT(@Nome,'%')");
+                query.WhereLike("Nome", "LOWER(CONCAT(@Nome,'%'))");
 
             if (!String.IsNullOrEmpty(filtro.Documento))
                 query.WhereLike("Documento", "CONCAT(@Documento,'%')");

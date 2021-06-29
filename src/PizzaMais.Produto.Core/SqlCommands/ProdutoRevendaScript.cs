@@ -21,10 +21,10 @@ namespace PizzaMais.Produto.Core.SqlCommands
                 query.WhereRaw("CAST(\"ProdutoRevenda\".\"Id\" AS VARCHAR(8)) LIKE CONCAT(CAST(@Id AS VARCHAR(8)),'%') ");
 
             if (!String.IsNullOrEmpty(filtro.Nome))
-                query.WhereLike("ProdutoRevenda.Nome", "CONCAT(@Nome,'%')");
+                query.WhereLike("ProdutoRevenda.Nome", "LOWER(CONCAT(@Nome,'%'))");
 
             if (!String.IsNullOrEmpty(filtro.Codigo))
-                query.WhereLike("ProdutoRevenda.Codigo", "CONCAT(@Codigo,'%')");
+                query.WhereLike("ProdutoRevenda.Codigo", "LOWER(CONCAT(@Codigo,'%'))");
 
             if (filtro.Preco.HasValue)
                 query.WhereRaw("\"ProdutoRevenda\".\"Preco\" >= @Preco");
@@ -33,7 +33,7 @@ namespace PizzaMais.Produto.Core.SqlCommands
                 query.Where("ProdutoRevenda.Ativo", "@Ativo");
 
             if (!String.IsNullOrEmpty(filtro.FornecedorNome))
-                query.WhereLike("Fornecedor.Nome", "CONCAT(@Fornecedor,'%')");
+                query.WhereLike("Fornecedor.Nome", "LOWER(CONCAT(@Fornecedor,'%'))");
 
             query.MontarProdutoRevendaOrderBy(filtro)
                 .Offset(filtro.Offset)
